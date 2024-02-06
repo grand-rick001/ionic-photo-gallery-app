@@ -15,7 +15,10 @@
     <ion-row>
       @for (photo of photoService.photos; track $index) {
       <ion-col size="6">
-        <ion-img [src]="photo.webviewPath"></ion-img>
+        <ion-img
+          [src]="photo.webviewPath"
+          (click)="photoService.deletePicture(photo, $index)"
+        ></ion-img>
       </ion-col>
       }
     </ion-row>
@@ -27,5 +30,5 @@
     </ion-fab-button>
   </ion-fab>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+  <app-explore-container name="Rick's Photo Gallery"></app-explore-container>
 </ion-content>
