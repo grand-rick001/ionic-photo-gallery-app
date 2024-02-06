@@ -7,8 +7,15 @@ import {
   IonFab,
   IonFabButton,
   IonIcon,
+  IonGrid,
+  IonRow,
+  IonCol,
+  IonImg,
 } from '@ionic/angular/standalone';
 import { ExploreContainerComponent } from '../explore-container/explore-container.component';
+import { addIcons } from 'ionicons';
+import { camera } from 'ionicons/icons';
+import { PhotoService } from '../services/photo.service';
 
 @Component({
   selector: 'app-tab2',
@@ -23,9 +30,23 @@ import { ExploreContainerComponent } from '../explore-container/explore-containe
     IonFab,
     IonFabButton,
     IonIcon,
+    IonGrid,
+    IonRow,
+    IonCol,
+    IonImg,
     ExploreContainerComponent,
   ],
 })
 export class Tab2Page {
-  constructor() {}
+  constructor(public photoService: PhotoService) {
+    addIcons({ camera });
+  }
+
+  async ngOnInit() {
+    await this.photoService.loadSaved();
+  }
+
+  addPhotoToGallery() {
+    this.photoService.addNewToGallery();
+  }
 }

@@ -11,8 +11,18 @@
     </ion-toolbar>
   </ion-header>
 
+  <ion-grid>
+    <ion-row>
+      @for (photo of photoService.photos; track $index) {
+      <ion-col size="6">
+        <ion-img [src]="photo.webviewPath"></ion-img>
+      </ion-col>
+      }
+    </ion-row>
+  </ion-grid>
+
   <ion-fab vertical="bottom" horizontal="center" slot="fixed">
-    <ion-fab-button>
+    <ion-fab-button (click)="addPhotoToGallery()">
       <ion-icon name="camera"></ion-icon>
     </ion-fab-button>
   </ion-fab>
